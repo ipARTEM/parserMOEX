@@ -65,7 +65,9 @@ python -m uvicorn app.main:app --host 0.0.0.0 --port 8089 --reload
 
 ---
 
+![Теплокарта — Акции](docs/images/1.png)
 
+![Теплокарта — Фьючеры](docs/images/2.png)
 
 
 
