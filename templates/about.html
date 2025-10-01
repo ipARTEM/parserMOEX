@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>О Бирже и источнике данных</h2>
+  <p>Данные берутся из официального <strong>ISS MOEX API</strong> (Informational & Statistical Server), который предоставляет онлайн‑доступ к рынкам Московской биржи.</p>
+  <ul>
+    <li>Акции: движок <code>stock</code>, рынок <code>shares</code>, борд <code>TQBR</code></li>
+    <li>Фьючерсы: движок <code>futures</code>, рынок <code>forts</code>, борд <code>RFUD</code></li>
+  </ul>
+  <p>Тепловая карта рассчитывает изменение цены в процентах: <code>(LAST - PREVPRICE) / PREVPRICE * 100</code>.<br> 
+  Для фьючерсов используется <code>PREVSETTLEPRICE</code>, если <code>PREVPRICE</code> недоступен.</p>
+  <p class="text-muted">Сайт работает локально, без серверной БД; обновление происходит при каждом открытии страницы.</p>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="row align-items-center g-4">
+    <div class="col-lg-7">
+      <h1 class="display-5 fw-bold">Локальный сайт parserMOEX</h1>
+      <p class="lead">Кнопка ниже открывает страницу с тепловыми картами Акций (TQBR) и Фьючерсов (FORTS), полученными напрямую из ISS MOEX API.</p>
+      <a class="btn btn-primary btn-lg shadow" href="/parser">parserMOEX</a>
+      <div class="text-muted mt-3">Порт запуска: <code>8089</code></div>
+    </div>
+    <div class="col-lg-5">
+      <div class="p-4 rounded-3 bg-body-secondary shadow-sm">
+        <h5 class="mb-3">Что внутри</h5>
+        <ul class="mb-0">
+          <li>FastAPI + Jinja2 + Bootstrap 5</li>
+          <li>Асинхронный сбор данных об инструментах</li>
+          <li>Тепловые карты по изменению цены (в %)</li>
+          <li>Доп. страницы: Расписание, О бирже, Как это работает</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+{% endblock %}

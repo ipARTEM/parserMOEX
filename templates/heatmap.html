@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h2 class="mb-0">Тепловые карты рынка</h2>
+  <a class="btn btn-outline-primary" href="/parser">Обновить</a>
+</div>
+
+<div class="mb-4">
+  <h4 class="mb-3">Акции ({{ shares_board }})</h4>
+  <div class="heatmap-grid">
+    {% for t in shares_tiles %}
+      <a class="tile text-decoration-none" style="background: {{ t.color }}" title="{{ t.secid }}">
+        <div class="tile-head fw-semibold">{{ t.shortname or t.secid }}</div>
+        <div class="tile-sub text-uppercase">{{ t.secid }}</div>
+        <div class="tile-last">{{ '%.4f'|format(t.last) if t.last is not none else '-' }}</div>
+        <div class="tile-chg {{ 'pos' if (t.pct_change or 0) >= 0 else 'neg' }}">
+          {{ ('+' if (t.pct_change or 0) >= 0 else '') ~ ('%.2f'|format(t.pct_change)) }}%
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="mb-4">
+  <h4 class="mb-3">Фьючерсы ({{ futures_board }})</h4>
+  <div class="heatmap-grid">
+    {% for t in futures_tiles %}
+      <a class="tile text-decoration-none" style="background: {{ t.color }}" title="{{ t.secid }}">
+        <div class="tile-head fw-semibold">{{ t.shortname or t.secid }}</div>
+        <div class="tile-sub text-uppercase">{{ t.secid }}</div>
+        <div class="tile-last">{{ '%.4f'|format(t.last) if t.last is not none else '-' }}</div>
+        <div class="tile-chg {{ 'pos' if (t.pct_change or 0) >= 0 else 'neg' }}">
+          {{ ('+' if (t.pct_change or 0) >= 0 else '') ~ ('%.2f'|format(t.pct_change)) }}%
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="small text-muted">Цвет = изменение % относительно предыдущей цены; зелёный — рост, красный — падение. Насыщенность отражает величину изменения.</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+:root {
+  --tile-radius: 16px;
+}
+.heatmap-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+}
+.tile {
+  display: block;
+  border-radius: var(--tile-radius);
+  padding: 12px;
+  color: #111;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.tile:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+  color: #111;
+}
+.tile-head { font-size: 1.0rem; }
+.tile-sub { font-size: .85rem; opacity: .7; letter-spacing: .5px; }
+.tile-last { font-weight: 700; font-size: 1.1rem; margin-top: 6px; }
+.tile-chg { font-weight: 700; }
+.tile-chg.pos { color: #0b6a0b; }
+.tile-chg.neg { color: #9b1c20; }
+
+/* Тёмная тема */
+html[data-theme="dark"] body { background: #0e0e11; color: #e6e6ea; }
+html[data-theme="dark"] .navbar { background: #15151a !important; }
+html[data-theme="dark"] .tile { color: #0f0f0f; }
+html[data-theme="dark"] .footer { background: #15151a !important; }
